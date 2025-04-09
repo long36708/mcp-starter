@@ -1,18 +1,20 @@
-import { createServer, startServer } from './server';
-import { registerToolYoutubeMusic } from './tools/youtube';
-import { getPackageJson } from './utils';
-import { McpToolContext } from './types';
+import type { McpToolContext } from './types'
 import { version } from '../package.json'
+import { createServer, startServer, stopServer } from './server'
+import { registerToolYoutubeMusic } from './tools/youtube'
 
 (async function main() {
-  const packageJson = getPackageJson();
-
   const mcp = createServer({
-    name: packageJson!.name || "my-mcp-server",
-    version: packageJson!.version || "0.0.1",
-  });
+    name: 'my-mcp-server',
+    version: version || '0.0.1',
+  })
 
-  registerToolYoutubeMusic({mcp} as McpToolContext);
+  process.on('SIGTERM', () => stopServer(mcp))
+  process.on('SIGINT', () => stopServer(mcp))
 
-  await startServer(mcp);
-})();
+  console.log('Creating server!')
+
+  registerToolYoutubeMusic({ mcp } as McpToolContext)
+
+  await startServer(mcp)
+})()

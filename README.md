@@ -23,7 +23,7 @@ The main export of this package is `./dist/index.mjs`. You can import it in your
 
 ```javascript
 // ESM
-import mcpStarter from 'mcp-starter';
+import mcpStarter from 'mcp-starter'
 
 // CJS (if your environment supports it)
 // const mcpStarter = require('mcp-starter');

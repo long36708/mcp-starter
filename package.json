@@ -1,42 +1,47 @@
 {
   "name": "mcp-starter",
+  "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
   "description": "Simple MCP Starter Package",
+  "author": "Kevin Kern <kevin@instructa.org>",
   "license": "MIT",
+  "homepage": "https://instructa.ai",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/instructa/mcp-starter"
   },
-  "homepage": "https://instructa.ai",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "author": "Kevin Kern <kevin@instructa.org>",
   "keywords": [
     "mcp",
     "mcp-starter",
     "model-context-protocol"
   ],
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "bin": {
+    "mcp": "./dist/index.mjs"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "build": "unbuild",
+    "build": "unbuild && npm run make-executable",
+    "make-executable": "node -e \"fs.chmodSync('dist/index.mjs', '755');\" --require fs",
     "start": "nodemon --exec 'tsx src/index.ts'",
     "dev:prepare": "nr build",
-    "inspect": "npx @modelcontextprotocol/inspector dist/index.mjs",
-    "dev": "concurrently \"unbuild --stub\" \"npm run inspect\""
+    "inspect": "npx @modelcontextprotocol/inspector dist/index.cjs",
+    "dev": "npx concurrently 'unbuild --stub' 'npm run inspect'",
+    "lint": "eslint",
+    "lint:fix": "eslint src --fix",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.3",
+    "@modelcontextprotocol/sdk": "^1.9.0",
     "ofetch": "^1.4.1",
     "zod": "^3.24.2"
   },
@@ -45,14 +50,11 @@
     "@biomejs/biome": "1.9.4",
     "@types/node": "^20.11.24",
     "citty": "^0.1.6",
-    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.7",
+    "esbuild": "^0.25.2",
     "nodemon": "^3.1.9",
     "tsx": "^4.19.3",
     "typescript": "^5.3.3",
     "unbuild": "^3.5.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab"
+  }
 }
