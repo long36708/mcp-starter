@@ -12,8 +12,6 @@ import { registerToolYoutubeMusic } from './tools/youtube'
   process.on('SIGTERM', () => stopServer(mcp))
   process.on('SIGINT', () => stopServer(mcp))
 
-  console.log('Creating server!')
-
   registerToolYoutubeMusic({ mcp } as McpToolContext)
 
   await startServer(mcp)

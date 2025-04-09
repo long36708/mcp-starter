@@ -5,8 +5,6 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 export function createServer(options: McpServerOptions): McpServer {
   const { name, version } = options
 
-  console.log('Creating server', name, version)
-
   const server = new McpServer(
     {
       name,
@@ -23,9 +21,6 @@ export async function startServer(
   const transport = new StdioServerTransport()
   try {
     await server.connect(transport)
-    console.log(
-      `MCP is server running 🚀`,
-    )
   }
   catch (err) {
     console.error('Error starting server:', err)
@@ -35,10 +30,9 @@ export async function startServer(
 export async function stopServer(server: McpServer) {
   try {
     await server.close()
-    console.log('Server closed 📍')
   }
   catch (error) {
-    console.log(`Error occured`, error)
+    console.error(`Error occured during server stop:`, error)
   }
   finally {
     process.exit(0)

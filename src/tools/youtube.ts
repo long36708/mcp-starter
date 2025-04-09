@@ -13,7 +13,6 @@ const execPromise = promisify(exec)
 const API_KEY = process.env.YOUTUBE_API_KEY
 
 export function registerToolYoutubeMusic({ mcp }: McpToolContext): void {
-  console.log('API KEY', API_KEY ? 'Loaded' : 'Not Found')
   if (!API_KEY) {
     console.error('YOUTUBE_API_KEY environment variable is not set. YouTube tools will fail.')
   }
@@ -42,8 +41,6 @@ export function registerToolYoutubeMusic({ mcp }: McpToolContext): void {
             q: trackName,
           },
         })
-
-        console.log('YouTube Search Results:', searchResults)
 
         return {
           content: [
@@ -86,8 +83,6 @@ export function registerToolYoutubeMusic({ mcp }: McpToolContext): void {
             q: trackName,
           },
         })
-
-        console.log('YouTube Search Result for Playing:', searchResults)
 
         if (!searchResults?.items || searchResults.items.length === 0) {
           return {
@@ -152,6 +147,4 @@ export function registerToolYoutubeMusic({ mcp }: McpToolContext): void {
       }
     },
   )
-
-  console.log('Registered YouTube tools')
 }
