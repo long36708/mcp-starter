@@ -1,84 +1,71 @@
-# mcp-starter
+# YouTube Music MCP 🎵
 
-[![npm version](https://badge.fury.io/js/mcp-starter.svg)](https://badge.fury.io/js/mcp-starter)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![smithery badge](https://smithery.ai/badge/@instructa/youtube-music-mcp)](https://smithery.ai/server/@instructa/youtube-music-mcp)
 
-Simple MCP Starter Package.
+This is a simple MCP server that allows you to search for and play tracks on YouTube Music directly from your AI assistant like Cursor or Claude Desktop.
 
-This package provides a basic template for getting started with the Model Context Protocol (MCP).
+Built with:
 
-## Installation
+- [YouTube Music](https://music.youtube.com/)
+- [Anthropic MCP](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
+- [Cursor](https://cursor.so/)
 
-```bash
-npm install mcp-starter
-# or
-yarn add mcp-starter
-# or
-pnpm add mcp-starter
+## Features
+
+- Search for tracks on YouTube Music by name.
+- Play tracks directly by searching and opening them in your default browser.
+
+**Cursor**
+
+1.  Go to Cursor Settings -> MCP -> Add new MCP server
+2.  Configure the server:
+    - Name = `YouTube Music` (or choose your own)
+    - Type = command
+    - Command: `npx -y @instructa/youtube-music-mcp`
+
+Now you can interact with your assistant (e.g., Cursor chat in Agent mode) and ask it to "search for [track name] on YouTube Music" or "play [track name] on YouTube Music".
+
+
+
+**Cursor**
+
+1.  Add the following MCP configuration to your Claude Desktop settings:
+
+```json
+{
+  "mcpServers": {
+    "youtube-music-mcp": {
+      "command": "npx",
+      "args": ["-y", "@instructa/youtube-music-mcp"]
+    }
+  }
+}
 ```
 
-## Usage
+2.  Interact with Cursor and ask it to search or play tracks on YouTube Music.
 
-The main export of this package is `./dist/index.mjs`. You can import it in your project like this:
+**Develop**
 
-```javascript
-// ESM
-import mcpStarter from 'mcp-starter'
-
-// CJS (if your environment supports it)
-// const mcpStarter = require('mcp-starter');
-
-// Use the package functionalities here
-```
-
-(Please add specific usage examples based on your package's actual functionality)
-
-## Development
-
-To work on this package locally:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/instructa/mcp-starter.git
-    cd mcp-starter
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    # or yarn install / pnpm install
-    ```
-
-3.  **Available Scripts:**
-
-    *   `npm run build`: Build the package using `unbuild`.
-    *   `npm run play`: Run the playground environment (`nr -C playground dev`).
-    *   `npm run start`: Start the server using `nodemon` and `tsx`.
-    *   `npm run dev:prepare`: Prepare the development environment by building the package.
-    *   `npm run inspect`: Inspect the build output using the MCP inspector.
-    *   `npm run dev`: Run build in stub mode and the inspector concurrently for development.
-
-## Dependencies
-
-*   [@modelcontextprotocol/sdk](https://www.npmjs.com/package/@modelcontextprotocol/sdk): ^1.0.3
-*   [@smithery/sdk](https://www.npmjs.com/package/@smithery/sdk): latest
-
-## Contributing
-
-Contributions are welcome! Please refer to the repository issues or open a new one to discuss potential changes.
+This MCP is typically run directly using `npx` and doesn't require local installation or building unless you intend to modify the source code. If you want to develop it locally, you would typically clone the source repository (if available) and follow its specific contribution guidelines.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details (assuming you have a LICENSE file, otherwise remove this link).
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Author
+---
 
-*   Kevin Kern ([kevin@instructa.org](mailto:kevin@instructa.org))
+## Links
 
-## Repository
+- X/Twitter: [@kregenrek](https://x.com/kregenrek)
+- Bluesky: [@kevinkern.dev](https://bsky.app/profile/kevinkern.dev)
 
-*   [GitHub](https://github.com/instructa/mcp-starter)
+## Courses
+- Learn Cursor AI: [Ultimate Cursor Course](https://www.instructa.ai/en/cursor-ai)
+- Learn to build software with AI: [instructa.ai](https://www.instructa.ai)
 
-## Homepage
+## See my other projects:
 
-*   [instructa.ai](https://instructa.ai)
+* [AI Prompts](https://github.com/instructa/ai-prompts/blob/main/README.md) - Curated AI Prompts for Cursor AI, Cline, Windsurf and Github Copilot
+* [codefetch](https://github.com/regenrek/codefetch) - Turn code into Markdown for LLMs with one simple terminal command
+* [aidex](https://github.com/regenrek/aidex) A CLI tool that provides detailed information about AI language models, helping developers choose the right model for their needs.
+* [codetie](https://github.com/codetie-ai/codetie) - XCode CLI
