@@ -155,8 +155,8 @@ async function publishPackage() {
   console.log(`📤 Publishing package@${newVersion} to npm...`);
 
   const publishCmd = isAlpha
-    ? 'pnpm publish --tag alpha --no-git-checks'
-    : 'pnpm publish --no-git-checks'; // --no-git-checks is often needed if git tagging is manual or separate
+    ? 'pnpm publish --tag alpha --no-git-checks --access public'
+    : 'pnpm publish --no-git-checks --access public'; // --no-git-checks is often needed if git tagging is manual or separate
 
   run(publishCmd, rootPath);
 

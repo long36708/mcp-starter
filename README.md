@@ -29,7 +29,7 @@ Add the following MCP configuration to your Cursor `.cursor/mcp.json` settings:
   "mcpServers": {
     "youtube-music-mcp": {
       "command": "npx",
-      "args": ["-y", "@instructa/youtube-music-mcp"],
+      "args": ["-y", "@instructa/mcp-youtube-music"],
       "env": {
         "YOUTUBE_API_KEY": "<INSERT_API_KEY_HERE>"
       }
