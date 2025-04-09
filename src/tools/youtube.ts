@@ -45,11 +45,10 @@ async function openUrlInBrowser(url: string, platform: NodeJS.Platform = process
   try {
     if (platform === 'darwin') {
       const appleScript = `tell application "Google Chrome" to open location "${url}"`
-      command = `osascript -e '${appleScript.replace(/'/g, "'\''")}'` // Keep existing escaping for robustness
+      command = `osascript -e '${appleScript.replace(/'/g, "'\''")}'`
       console.log(`Executing command for macOS: ${command}`)
       const { stderr } = await execPromise(command)
       if (stderr) {
-        // Log stderr as warning, as osascript might output non-fatal messages here
         console.warn('osascript stderr:', stderr)
       }
     }
@@ -75,7 +74,6 @@ async function openUrlInBrowser(url: string, platform: NodeJS.Platform = process
 export function registerToolYoutubeMusic({ mcp }: McpToolContext): void {
   if (!YOUTUBE_API_KEY) {
     console.error('YOUTUBE_API_KEY environment variable is not set. YouTube tools will not be registered.')
-    // Optionally, throw an error or prevent registration
     return
   }
 
@@ -143,16 +141,14 @@ export function registerToolYoutubeMusic({ mcp }: McpToolContext): void {
       catch (error: unknown) {
         console.error('Error in playTrack tool:', error)
         if (error instanceof McpError && error.code === ErrorCode.InternalError) {
-          // Propagate internal errors from helpers
           throw error
         }
         const message = error instanceof McpError
-          ? error.message // Use message from McpError if available
+          ? error.message
           : error instanceof Error
             ? error.message
             : 'An unexpected error occurred during track playback.'
 
-        // Return error information to the MCP client
         return {
           content: [{ type: 'text', text: `Error playing track: ${message}` }],
           isError: true,

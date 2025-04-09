@@ -30,8 +30,8 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "unbuild && npm run make-executable",
-    "make-executable": "node -e \"fs.chmodSync('dist/index.mjs', '755');\" --require fs",
+    "build": "unbuild && npm run chmod-run",
+    "chmod-run": "node -e \"fs.chmodSync('dist/index.mjs', '755');\" --require fs",
     "start": "nodemon --exec 'tsx src/index.ts'",
     "dev:prepare": "nr build",
     "inspect": "npx @modelcontextprotocol/inspector dist/index.cjs",

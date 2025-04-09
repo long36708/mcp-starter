@@ -3,9 +3,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 interface PackageJson {
-  name?: string // Make name optional as it might not always be present
+  name?: string
   version: string
-  [key: string]: any // Allows for other fields in package.json
+  [key: string]: any
 }
 
 export function getPackageJson(): PackageJson | null {
@@ -18,7 +18,6 @@ export function getPackageJson(): PackageJson | null {
     const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf-8')
     const packageJson: PackageJson = JSON.parse(packageJsonContent)
 
-    // Basic validation
     if (!packageJson.version) {
       console.error('Error: package.json is missing the required \'version\' field.')
       return null

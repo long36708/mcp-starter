@@ -12,7 +12,6 @@ export interface McpServerOptions {
 
 export type Tools = (context: McpToolContext) => void
 
-// YouTube API Types
 export interface YouTubeVideoId {
   videoId: string
 }
@@ -29,5 +28,4 @@ export interface YouTubeSearchResultItem {
 
 export interface YouTubeSearchResults {
   items: YouTubeSearchResultItem[]
-  // Add other potential fields if needed, e.g., nextPageToken
 }
