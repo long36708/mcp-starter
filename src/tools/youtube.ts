@@ -44,7 +44,6 @@ async function openUrlInBrowser(url: string, platform: NodeJS.Platform = process
 
   try {
     if (platform === 'darwin') {
-      // Use template literal for cleaner escaping
       const appleScript = `tell application "Google Chrome" to open location "${url}"`
       command = `osascript -e '${appleScript.replace(/'/g, "'\''")}'` // Keep existing escaping for robustness
       console.log(`Executing command for macOS: ${command}`)

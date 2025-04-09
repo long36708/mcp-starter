@@ -10,39 +10,35 @@ Built with:
 - [Anthropic MCP](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
 - [Cursor](https://cursor.so/)
 
-## Features
+## Available Tools
 
-- Search for tracks on YouTube Music by name.
-- Play tracks directly by searching and opening them in your default browser.
-
-**Cursor**
-
-1.  Go to Cursor Settings -> MCP -> Add new MCP server
-2.  Configure the server:
-    - Name = `YouTube Music` (or choose your own)
-    - Type = command
-    - Command: `npx -y @instructa/youtube-music-mcp`
-
-Now you can interact with your assistant (e.g., Cursor chat in Agent mode) and ask it to "search for [track name] on YouTube Music" or "play [track name] on YouTube Music".
+- `searchTrack`: Search for tracks on YouTube Music by name.
+- `playTrack`: Play tracks directly by searching and opening them in your default browser.
 
 
+# Installation
 
-**Cursor**
+## 1. Get a key
 
-1.  Add the following MCP configuration to your Claude Desktop settings:
+To make this work you need a valid [Google Youtube API Key](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
+
+## 2. Add to cursor
+
+Add the following MCP configuration to your Cursor `.cursor/mcp.json` settings:
 
 ```json
 {
   "mcpServers": {
     "youtube-music-mcp": {
       "command": "npx",
-      "args": ["-y", "@instructa/youtube-music-mcp"]
+      "args": ["-y", "@instructa/youtube-music-mcp"],
+			"env": {
+				"YOUTUBE_API_KEY": "<INSERT_API_KEY_HERE>"
+			}
     }
   }
 }
 ```
-
-2.  Interact with Cursor and ask it to search or play tracks on YouTube Music.
 
 **Develop**
 
