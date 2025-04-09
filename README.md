@@ -1,7 +1,5 @@
 # YouTube Music MCP 🎵
 
-[![smithery badge](https://smithery.ai/badge/@instructa/youtube-music-mcp)](https://smithery.ai/server/@instructa/youtube-music-mcp)
-
 This is a simple MCP server that allows you to search for and play tracks on YouTube Music directly from your AI assistant like Cursor or Claude Desktop.
 
 Built with:
