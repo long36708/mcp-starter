@@ -39,7 +39,7 @@
     "lint": "eslint",
     "lint:fix": "eslint src --fix",
     "typecheck": "tsc --noEmit",
-    "release": "tsx src/release.ts"
+    "release": "tsx scripts/release.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
