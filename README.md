@@ -1,46 +1,116 @@
-# YouTube Music MCP 🎵
+# MCP Starter Project
 
-This is a simple MCP server that allows you to search for and play tracks on YouTube Music directly from your AI assistant like Cursor or Claude Desktop.
+![mcp starter](/public/banner.png)
+<p>
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat&colorA=18181B&colorB=28CF8D" alt="License">
+  <!-- Add other relevant badges here, e.g., build status, stars -->
+  <!-- <a href="YOUR_REPO_LINK/stargazers"><img src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Stars"></a> -->
+</p>
 
-Built with:
+**MCP Starter** - A foundation for building your own local Model Context Protocol (MCP) server.
 
-- [YouTube Music](https://music.youtube.com/)
-- [Anthropic MCP](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
-- [Cursor](https://cursor.so/)
+This starter kit provides a basic structure and example setup for creating custom tools accessible via AI assistants like Cursor or Claude Desktop using the MCP standard.
 
-## Available Tools
+---
 
-- `searchTrack`: Search for tracks on YouTube Music by name.
-- `playTrack`: Play tracks directly by searching and opening them in your default browser.
+## Features
 
+- 🚀 **MCP Ready** - Easily integrate with MCP-compatible clients.
+- 🔧 **Extensible Tooling** - Simple structure to add your own custom tools.
+- 📦 **Minimal Setup** - Get started quickly with a basic server implementation.
+- ↔️ **Based on Anthropic MCP** - Follows the specifications outlined by Anthropic.
+- 🤖 **Cursor AI Integration** - Includes example `.cursor/mcp.json` configuration.
+- ⌨️ **TypeScript Ready** - (Optional) Add type safety to your project.
 
-# Installation
+<!-- Add other features specific to your starter implementation -->
 
-## 1. Get a key
+## Usage
 
-To make this work you need a valid [Google Youtube API Key](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
+![mcp starter](/public/banner.png)
 
-## 2. Add to cursor
+Local development
 
-Add the following MCP configuration to your Cursor `.cursor/mcp.json` settings:
-
-```json
+```
 {
   "mcpServers": {
-    "youtube-music-mcp": {
-      "command": "npx",
-      "args": ["-y", "@instructa/mcp-youtube-music"],
-      "env": {
-        "YOUTUBE_API_KEY": "<INSERT_API_KEY_HERE>"
-      }
+    "my-starter-mcp": {
+      "command": "node",
+      "args": ["./dist/index.mjs"]
     }
   }
 }
 ```
 
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (Specify version if necessary)
+- An MCP-compatible client (e.g., [Cursor](https://cursor.com/))
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+    cd YOUR_REPO
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or yarn install
+    ```
+
+3.  **Configure environment variables:**
+    *   Create a `.env` file based on `.env.example`.
+    *   Add any necessary API keys or configuration values required by your custom tools.
+
+4.  **Add to your MCP client:**
+    Add the following MCP configuration to your client (e.g., Cursor's `.cursor/mcp.json`):
+
+    ```json
+    {
+      "mcpServers": {
+        "my-custom-mcp": {
+          "command": "node", // Or your chosen execution command
+          "args": ["path/to/your/server/entrypoint.js"], // Adjust path as needed
+          "env": {
+            // Add any environment variables your server needs from the client side, if any
+            // "EXAMPLE_API_KEY": "<INSERT_API_KEY_HERE>"
+          }
+        }
+      }
+    }
+    ```
+    *   Replace `"my-custom-mcp"` with a unique name for your server.
+    *   Adjust the `"command"` and `"args"` to correctly point to and run your server's main script.
+    *   Ensure any required `env` variables are configured either here or directly in your server's environment (e.g., via the `.env` file).
+
+### Running the Server
+
+```bash
+npm start
+# or yarn start
+```
+
+This command should start your MCP server, making its tools available to connected clients.
+
+## Available Tools
+
+*   `exampleTool`: Describe what your example tool does.
+*   *(Add more tools as you implement them)*
+
 **Develop**
 
-This MCP is typically run directly using `npx` and doesn't require local installation or building unless you intend to modify the source code. If you want to develop it locally, you would typically clone the source repository (if available) and follow its specific contribution guidelines.
+This project provides a starting point. You'll likely want to:
+
+*   Implement your own custom tools within the server logic.
+*   Define the schema (parameters, description) for your tools.
+*   Add error handling and logging.
+*   Write tests for your tools.
+
+Follow the contribution guidelines if you plan to contribute back to the starter project itself.
 
 ## License
 
@@ -61,5 +131,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 * [AI Prompts](https://github.com/instructa/ai-prompts/blob/main/README.md) - Curated AI Prompts for Cursor AI, Cline, Windsurf and Github Copilot
 * [codefetch](https://github.com/regenrek/codefetch) - Turn code into Markdown for LLMs with one simple terminal command
-* [aidex](https://github.com/regenrek/aidex) A CLI tool that provides detailed information about AI language models, helping developers choose the right model for their needs.
-* [codetie](https://github.com/codetie-ai/codetie) - XCode CLI
+* [aidex](https://github.com/regenrek/aidex) A CLI tool that provides detailed information about AI language models, helping developers choose the right model for their needs.# mcp-starter
