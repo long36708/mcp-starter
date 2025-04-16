@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "my-starter-mcp": {
+      "command": "node",
+      "args": ["./dist/index.mjs"]
+    }
+  }
+}

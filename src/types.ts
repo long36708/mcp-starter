@@ -11,21 +11,3 @@ export interface McpServerOptions {
 }
 
 export type Tools = (context: McpToolContext) => void
-
-export interface YouTubeVideoId {
-  videoId: string
-}
-
-export interface YouTubeSnippet {
-  title: string
-  description: string
-}
-
-export interface YouTubeSearchResultItem {
-  id: YouTubeVideoId
-  snippet: YouTubeSnippet
-}
-
-export interface YouTubeSearchResults {
-  items: YouTubeSearchResultItem[]
-}
