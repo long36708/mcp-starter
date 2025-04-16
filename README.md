@@ -26,7 +26,7 @@ This starter kit provides a basic structure and example setup for creating custo
 
 ## Usage
 
-![mcp starter](/public/starter.jpg)
+![mcp starter](/public/starter2.jpg)
 
 Local development
 
