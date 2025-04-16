@@ -20,13 +20,13 @@ This starter kit provides a basic structure and example setup for creating custo
 - 📦 **Minimal Setup** - Get started quickly with a basic server implementation.
 - ↔️ **Based on Anthropic MCP** - Follows the specifications outlined by Anthropic.
 - 🤖 **Cursor AI Integration** - Includes example `.cursor/mcp.json` configuration.
-- ⌨️ **TypeScript Ready** - (Optional) Add type safety to your project.
+- ⌨️ **TypeScript** - Add type safety to your project.
 
 <!-- Add other features specific to your starter implementation -->
 
 ## Usage
 
-![mcp starter](/public/starter.png)
+![mcp starter](/public/starter.jpg)
 
 Local development
 
