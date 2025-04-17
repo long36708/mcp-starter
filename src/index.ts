@@ -1,18 +1,40 @@
+#!/usr/bin/env node
 import type { McpToolContext } from './types'
+import { runMain as _runMain, defineCommand } from 'citty'
 import { version } from '../package.json'
 import { createServer, startServer, stopServer } from './server'
 import { registerMyTool } from './tools/mytool'
 
-(async function main() {
-  const mcp = createServer({
-    name: 'my-mcp-server',
-    version: version || '0.0.1',
-  })
+const cli = defineCommand({
+  meta: {
+    name: 'mcp-instruct',
+    version,
+    description: 'Run the MCP starter with stdio, http, or sse transport',
+  },
+  args: {
+    http: { type: 'boolean', description: 'Run with HTTP transport' },
+    sse: { type: 'boolean', description: 'Run with SSE transport' },
+    stdio: { type: 'boolean', description: 'Run with stdio transport (default)' },
+    port: { type: 'string', description: 'Port for http/sse (default 3000)', default: '3000' },
+    endpoint: { type: 'string', description: 'HTTP endpoint (default /mcp)', default: '/mcp' },
+  },
+  async run({ args }) {
+    // decide transport
+    const mode = args.http ? 'http' : args.sse ? 'sse' : 'stdio'
+    const mcp = createServer({ name: 'my-mcp-server', version })
 
-  process.on('SIGTERM', () => stopServer(mcp))
-  process.on('SIGINT', () => stopServer(mcp))
+    process.on('SIGTERM', () => stopServer(mcp))
+    process.on('SIGINT', () => stopServer(mcp))
 
-  registerMyTool({ mcp } as McpToolContext)
+    registerMyTool({ mcp } as McpToolContext)
 
-  await startServer(mcp, { type: 'stdio' })
-})()
+    if (mode === 'http')
+      await startServer(mcp, { type: 'http', port: Number(args.port), endpoint: args.endpoint })
+    else if (mode === 'sse')
+      await startServer(mcp, { type: 'sse', port: Number(args.port) })
+    else
+      await startServer(mcp, { type: 'stdio' })
+  },
+})
+
+export const runMain = () => _runMain(cli)

@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "my-starter-mcp": {
+    "my-starter-mcp-http": {
       "command": "node",
-      "args": ["./dist/index.mjs"]
+      "args": ["./bin/cli.mjs"]
     }
   }
 }
