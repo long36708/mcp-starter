@@ -20,70 +20,11 @@ MCP Server Starter gives you a basic structure to run local tools with Cursor, C
 - ⌨️ **TypeScript** - Add type safety to your project.
 - 📡 **Flexible Communication** - Supports multiple communication protocols between client and server, including standard I/O (`stdio`), HTTP, and Server-Sent Events (`sse`).
 
-<!-- Add other features specific to your starter implementation -->
+## Todo
 
-
-
-![mcp starter](/public/starter2.jpg)
-
-## Supported Transport Options
-
-### Stdio 
-Recommend for local setups
-
-#### Local development
-```json
-{
-  "mcpServers": {
-    "my-starter-mcp-stdio": {
-      "command": "node",
-      "args": ["./dist/index.mjs", "stdio"]
-    }
-  }
-}
-```
-
-#### Published Package
-```json
-{
-  "mcpServers": {
-    "my-starter-mcp-stdio": {
-      "command": "npx",
-      "args": ["my-mcp-server", "stdio"]
-    }
-  }
-}
-```
-
-### Streamable HTTP
-Recommend for remote server usage
-
-#### Local development
-Use the `streamable http` transport
-```json
-{
-  "mcpServers": {
-    "my-starter-mcp-http": {
-      "command": "node",
-      "args": ["my-mcp-server", "http", "--port", "4001"]
-      // "args": ["my-mcp-server", "sse", "--port", "4002"] (or deprecated sse usage)
-    }
-  }
-}
-```
-#### Published Package
-Use `npx` and your own published package name
-```json
-{
-  "mcpServers": {
-    "my-starter-mcp-http": {
-      "command": "npx",
-      "args": ["my-mcp-server", "http", "--port", "4001"]
-      // "args": ["my-mcp-server", "sse", "--port", "4002"] (or deprecated sse usage)
-    }
-  }
-}
-```
+- [ ] Add option to publish your own packages
+- [ ] Better CLI support for scaffolding
+- [ ] Prompts to build tools on the fly
 
 ## Getting Started
 
@@ -92,69 +33,122 @@ Use `npx` and your own published package name
 - [Node.js](https://nodejs.org/) (Specify version if necessary)
 - An MCP-compatible client (e.g., [Cursor](https://cursor.com/))
 
-### Installation & Setup
+## Usage
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-    cd YOUR_REPO
-    ```
+### Supported Transport Options
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    # or yarn install
-    ```
+Model Context Protocol Supports multiple Transport methods.
 
-3.  **Start Server**
+### stdio
 
-    ```bash
-    npm start
-    # pnpm start
-    # or yarn start
-    ```
+![mcp starter](/public/stdio-mcp-starter.jpg)
 
-This command should start your MCP server, making its tools available to connected clients.
+Recommend for local setups
+
+#### Code Editor Support
+
+Add the code snippets below
+
+* Cursor: `.cursor/mcp.json`
+
+**Local development/testing**
+
+Use this if you want to test your mcp server locally
+
+```json
+{
+  "mcpServers": {
+    "my-starter-mcp-stdio": {
+      "command": "node",
+      "args": ["./bin/cli.mjs", "--stdio"]
+    }
+  }
+}
+```
+
+**Published Package**
+
+Use this when you have published your package in the npm registry
+
+```json
+{
+  "mcpServers": {
+    "my-starter-mcp-stdio": {
+      "command": "npx",
+      "args": ["my-mcp-server", "--stdio"]
+    }
+  }
+}
+```
+
+### Streamable HTTP
+
+![mcp starter](/public/stdio-mcp-starter.jpg)
+
+>Important: Streamable HTTP is not supported in Cursor yet
+
+Recommend for remote server usage
+
+**Important:** In contrast to stdio you need also to run the server with the correct flag
+
+**Local development**
+Use the `streamable http` transport
+
+1. Start the MCP Server
+  Run this in your terminal
+  ```bash
+  node ./bin/cli.mjs --http --port 4200
+  ```
+
+  Or with mcp inspector
+  ```
+  npm run dev-http
+  # npm run dev-sse (deprecated)
+  ```
+
+  2. Add this to your config
+  ```json
+  {
+    "mcpServers": {
+      "my-starter-mcp-http": {
+        "command": "node",
+        "args": ["./bin/cli.mjs", "--http", "--port", "4001"]
+        // "args": ["./bin/cli.mjs", "--sse", "--port", "4002"] (or deprecated sse usage)
+      }
+    }
+  }
+  ```
+
+**Published Package**
+
+Use this when you have published your package in the npm registry
+
+Run this in your terminal
+```bash
+npx my-mcp-server --http --port 4200
+# npx my-mcp-server --sse --port 4201 (deprecated)
+```
+
+```json
+{
+  "mcpServers": {
+    "my-starter-mcp-http": {
+      "url": "http://localhost:4200/mcp"
+      // "url": "http://localhost:4201/sse"
+    }
+  }
+}
+```
 
 ## Command-Line Options
 
-The server can be configured to use different communication protocols via command-line arguments (exact flags depend on the implementation in `src/cli.ts`).
+### Protocol Selection
 
-*   **Protocol Selection:**
-    *   `stdio` (Default): Uses standard input/output for communication. Typically requires no extra flags.
-    *   `http`: Uses HTTP REST protocol.
-        *   `--port <number>`: Specifies the port (default: `3000`).
-        *   `--endpoint <path>`: Specifies the API endpoint path (default: `/mcp`).
-    *   `sse`: Uses Server-Sent Events.
-        *   `--port <number>`: Specifies the port (default: `3000`).
-
-*   **Example Usage (Illustrative):**
-    ```bash
-    # Run with default stdio
-    node ./dist/index.mjs
-
-    # Run with HTTP on port 4000
-    node ./dist/index.mjs http --port 4000
-
-    # Run with SSE on default port
-    node ./dist/index.mjs sse
-    ```
-
-## Available Tools
-
-*   `exampleTool`: Describe what your example tool does.
-*   *(Add more tools as you implement them)*
-
-**Develop**
-
-This project provides a starting point. You'll likely want to:
-
-*   Implement your own custom tools within the server logic.
-*   Define the schema (parameters, description) for your tools.
-*   Add error handling and logging.
-*   Write tests for your tools.
-
-Follow the contribution guidelines if you plan to contribute back to the starter project itself.
+| Protocol | Description            | Flags                                                | Notes           |
+| :------- | :--------------------- | :--------------------------------------------------- | :-------------- |
+| `stdio`  | Standard I/O           | (None)                                               | Default         |
+| `http`   | HTTP REST              | `--port <num>` (def: 3000), `--endpoint <path>` (def: `/mcp`) |                 |
+| `sse`    | Server-Sent Events     | `--port <num>` (def: 3000)                            | Deprecated      |
 
 ## License
 

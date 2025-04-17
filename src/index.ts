@@ -19,7 +19,6 @@ const cli = defineCommand({
     endpoint: { type: 'string', description: 'HTTP endpoint (default /mcp)', default: '/mcp' },
   },
   async run({ args }) {
-    // decide transport
     const mode = args.http ? 'http' : args.sse ? 'sse' : 'stdio'
     const mcp = createServer({ name: 'my-mcp-server', version })
 
@@ -28,12 +27,16 @@ const cli = defineCommand({
 
     registerMyTool({ mcp } as McpToolContext)
 
-    if (mode === 'http')
+    if (mode === 'http') {
       await startServer(mcp, { type: 'http', port: Number(args.port), endpoint: args.endpoint })
-    else if (mode === 'sse')
+    }
+    else if (mode === 'sse') {
+      console.log('Starting SSE server...')
       await startServer(mcp, { type: 'sse', port: Number(args.port) })
-    else
+    }
+    else if (mode === 'stdio') {
       await startServer(mcp, { type: 'stdio' })
+    }
   },
 })
 
