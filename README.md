@@ -1,4 +1,4 @@
-# MCP Starter Project
+# MCP Server Starter
 
 ![mcp starter](/public/banner.png)
 <p>
@@ -7,35 +7,79 @@
   <!-- <a href="YOUR_REPO_LINK/stargazers"><img src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Stars"></a> -->
 </p>
 
-**MCP Starter** - A foundation for building your own local Model Context Protocol (MCP) server.
+**Want to build your own MCP server?**
 
-This starter kit provides a basic structure and example setup for creating custom tools accessible via AI assistants like Cursor or Claude Desktop using the MCP standard.
+MCP Server Starter gives you a basic structure to run local tools with Cursor, Claude, and others using the MCP standard.
 
 ---
 
 ## Features
 
-- 🚀 **MCP Ready** - Easily integrate with MCP-compatible clients.
-- 🔧 **Extensible Tooling** - Simple structure to add your own custom tools.
 - 📦 **Minimal Setup** - Get started quickly with a basic server implementation.
-- ↔️ **Based on Anthropic MCP** - Follows the specifications outlined by Anthropic.
 - 🤖 **Cursor AI Integration** - Includes example `.cursor/mcp.json` configuration.
 - ⌨️ **TypeScript** - Add type safety to your project.
+- 📡 **Flexible Communication** - Supports multiple communication protocols between client and server, including standard I/O (`stdio`), HTTP, and Server-Sent Events (`sse`).
 
 <!-- Add other features specific to your starter implementation -->
 
-## Usage
+
 
 ![mcp starter](/public/starter2.jpg)
 
-Local development
+## Supported Transport Options
 
-```
+### Stdio 
+Recommend for local setups
+
+#### Local development
+```json
 {
   "mcpServers": {
-    "my-starter-mcp": {
+    "my-starter-mcp-stdio": {
       "command": "node",
-      "args": ["./dist/index.mjs"]
+      "args": ["./dist/index.mjs", "stdio"]
+    }
+  }
+}
+```
+
+#### Published Package
+```json
+{
+  "mcpServers": {
+    "my-starter-mcp-stdio": {
+      "command": "npx",
+      "args": ["my-mcp-server", "stdio"]
+    }
+  }
+}
+```
+
+### Streamable HTTP
+Recommend for remote server usage
+
+#### Local development
+Use the `streamable http` transport
+```json
+{
+  "mcpServers": {
+    "my-starter-mcp-http": {
+      "command": "node",
+      "args": ["my-mcp-server", "http", "--port", "4001"]
+      // "args": ["my-mcp-server", "sse", "--port", "4002"] (or deprecated sse usage)
+    }
+  }
+}
+```
+#### Published Package
+Use `npx` and your own published package name
+```json
+{
+  "mcpServers": {
+    "my-starter-mcp-http": {
+      "command": "npx",
+      "args": ["my-mcp-server", "http", "--port", "4001"]
+      // "args": ["my-mcp-server", "sse", "--port", "4002"] (or deprecated sse usage)
     }
   }
 }
@@ -62,39 +106,39 @@ Local development
     # or yarn install
     ```
 
-3.  **Configure environment variables:**
-    *   Create a `.env` file based on `.env.example`.
-    *   Add any necessary API keys or configuration values required by your custom tools.
+3.  **Start Server**
 
-4.  **Add to your MCP client:**
-    Add the following MCP configuration to your client (e.g., Cursor's `.cursor/mcp.json`):
-
-    ```json
-    {
-      "mcpServers": {
-        "my-custom-mcp": {
-          "command": "node", // Or your chosen execution command
-          "args": ["path/to/your/server/entrypoint.js"], // Adjust path as needed
-          "env": {
-            // Add any environment variables your server needs from the client side, if any
-            // "EXAMPLE_API_KEY": "<INSERT_API_KEY_HERE>"
-          }
-        }
-      }
-    }
+    ```bash
+    npm start
+    # pnpm start
+    # or yarn start
     ```
-    *   Replace `"my-custom-mcp"` with a unique name for your server.
-    *   Adjust the `"command"` and `"args"` to correctly point to and run your server's main script.
-    *   Ensure any required `env` variables are configured either here or directly in your server's environment (e.g., via the `.env` file).
-
-### Running the Server
-
-```bash
-npm start
-# or yarn start
-```
 
 This command should start your MCP server, making its tools available to connected clients.
+
+## Command-Line Options
+
+The server can be configured to use different communication protocols via command-line arguments (exact flags depend on the implementation in `src/cli.ts`).
+
+*   **Protocol Selection:**
+    *   `stdio` (Default): Uses standard input/output for communication. Typically requires no extra flags.
+    *   `http`: Uses HTTP REST protocol.
+        *   `--port <number>`: Specifies the port (default: `3000`).
+        *   `--endpoint <path>`: Specifies the API endpoint path (default: `/mcp`).
+    *   `sse`: Uses Server-Sent Events.
+        *   `--port <number>`: Specifies the port (default: `3000`).
+
+*   **Example Usage (Illustrative):**
+    ```bash
+    # Run with default stdio
+    node ./dist/index.mjs
+
+    # Run with HTTP on port 4000
+    node ./dist/index.mjs http --port 4000
+
+    # Run with SSE on default port
+    node ./dist/index.mjs sse
+    ```
 
 ## Available Tools
 

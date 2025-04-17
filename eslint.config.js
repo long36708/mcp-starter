@@ -8,7 +8,7 @@ export default antfu(
     rules: {
       'pnpm/json-enforce-catalog': 'off',
       'no-console': 'warn',
-      'node/prefer-global/process': 'off'
+      'node/prefer-global/process': 'off',
     },
   },
 )

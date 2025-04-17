@@ -14,5 +14,5 @@ import { registerMyTool } from './tools/mytool'
 
   registerMyTool({ mcp } as McpToolContext)
 
-  await startServer(mcp)
+  await startServer(mcp, { type: 'stdio' })
 })()
