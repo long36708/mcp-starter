@@ -140,6 +140,12 @@ npx my-mcp-server --http --port 4200
 }
 ```
 
+## Use the Inspector
+
+Use the `inspect` command to debug your mcp server
+
+![mcp starter](/public/inspect.jpg)
+
 ## Command-Line Options
 
 ### Protocol Selection
