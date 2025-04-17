@@ -83,7 +83,7 @@ Use this when you have published your package in the npm registry
 
 ### Streamable HTTP
 
-![mcp starter](/public/stdio-mcp-starter.jpg)
+![mcp starter](/public/mcp-sse-starter.jpg)
 
 >Important: Streamable HTTP is not supported in Cursor yet
 
@@ -145,6 +145,7 @@ npx my-mcp-server --http --port 4200
 Use the `inspect` command to debug your mcp server
 
 ![mcp starter](/public/inspect.jpg)
+![mcp starter](/public/streamable2.jpg)
 
 ## Command-Line Options
 
