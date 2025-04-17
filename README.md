@@ -15,10 +15,15 @@ MCP Server Starter gives you a basic structure to run local tools with Cursor, C
 
 ## Features
 
+- 📡 **Flexible Communication**
+  - Supports multiple communication protocols between client and server,
+  - `stdio`: Local usage
+  - `Streamable HTTP`: Remote and local useage
+  - `sse`: Remote and local usage (deprecated)~~
+
 - 📦 **Minimal Setup** - Get started quickly with a basic server implementation.
 - 🤖 **Cursor AI Integration** - Includes example `.cursor/mcp.json` configuration.
 - ⌨️ **TypeScript** - Add type safety to your project.
-- 📡 **Flexible Communication** - Supports multiple communication protocols between client and server, including standard I/O (`stdio`), HTTP, and Server-Sent Events (`sse`).
 
 ## Todo
 
