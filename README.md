@@ -8,11 +8,11 @@
   <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/dx-zero/mcpn?style=flat-square&logo=github">
   <br />
   <strong>Created by</strong><br />
-  <a href="https://twitter.com/tedx_ai">
-    <img src="https://img.shields.io/twitter/follow/tedx_ai?style=social" alt="Follow @tedx_ai on Twitter">
-  </a>
   <a href="https://twitter.com/kregenrek">
     <img src="https://img.shields.io/twitter/follow/kregenrek?style=social" alt="Follow @kregenrek on Twitter">
+  </a>
+  <a href="https://twitter.com/tedx_ai">
+    <img src="https://img.shields.io/twitter/follow/tedx_ai?style=social" alt="Follow @tedx_ai on Twitter">
   </a>
 </div>
 
@@ -21,6 +21,10 @@
 MCP Server Starter gives you a basic structure to run local tools with Cursor, Claude, and others using the MCP standard.
 
 ---
+
+<a href="https://glama.ai/mcp/servers/@instructa/mcp-starter">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@instructa/mcp-starter/badge" alt="Starter MCP server" />
+</a>
 
 ## Features
 
