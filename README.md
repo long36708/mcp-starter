@@ -182,5 +182,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 ## Courses
-- Learn Cursor AI: [Ultimate Cursor Course](https://www.instructa.ai/en/cursor-ai)
 - Learn to build software with AI: [instructa.ai](https://www.instructa.ai)
