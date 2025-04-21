@@ -1,11 +1,20 @@
 # MCP Server Starter
 
 ![mcp starter](/public/banner.png)
-<p>
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat&colorA=18181B&colorB=28CF8D" alt="License">
-  <!-- Add other relevant badges here, e.g., build status, stars -->
-  <!-- <a href="YOUR_REPO_LINK/stargazers"><img src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Stars"></a> -->
-</p>
+
+<div align="center">
+  <img alt="NPM Downloads" src="https://img.shields.io/npm/dx-zero/mcpn?style=flat-square&logo=npm">
+  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/dx-zero/mcpn?style=flat-square&logo=jsdeliver">
+  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/dx-zero/mcpn?style=flat-square&logo=github">
+  <br />
+  <strong>Created by</strong><br />
+  <a href="https://twitter.com/tedx_ai">
+    <img src="https://img.shields.io/twitter/follow/tedx_ai?style=social" alt="Follow @tedx_ai on Twitter">
+  </a>
+  <a href="https://twitter.com/kregenrek">
+    <img src="https://img.shields.io/twitter/follow/kregenrek?style=social" alt="Follow @kregenrek on Twitter">
+  </a>
+</div>
 
 **Want to build your own MCP server?**
 
@@ -168,17 +177,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-## Links
-
-- X/Twitter: [@kregenrek](https://x.com/kregenrek)
-- Bluesky: [@kevinkern.dev](https://bsky.app/profile/kevinkern.dev)
-
 ## Courses
 - Learn Cursor AI: [Ultimate Cursor Course](https://www.instructa.ai/en/cursor-ai)
 - Learn to build software with AI: [instructa.ai](https://www.instructa.ai)
-
-## See my other projects:
-
-* [AI Prompts](https://github.com/instructa/ai-prompts/blob/main/README.md) - Curated AI Prompts for Cursor AI, Cline, Windsurf and Github Copilot
-* [codefetch](https://github.com/regenrek/codefetch) - Turn code into Markdown for LLMs with one simple terminal command
-* [aidex](https://github.com/regenrek/aidex) A CLI tool that provides detailed information about AI language models, helping developers choose the right model for their needs.# mcp-starter
