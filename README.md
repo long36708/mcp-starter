@@ -3,16 +3,13 @@
 ![mcp starter](/public/banner.png)
 
 <div align="center">
-  <!-- <img alt="NPM Downloads" src="https://img.shields.io/npm/dx-zero/mcpn?style=flat-square&logo=npm">
-  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/dx-zero/mcpn?style=flat-square&logo=jsdeliver">
-  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/dx-zero/mcpn?style=flat-square&logo=github">
+  <!-- <img alt="NPM Downloads" src="https://img.shields.io/npm/instructa/mcpn?style=flat-square&logo=npm">
+  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/instructa/mcpn?style=flat-square&logo=jsdeliver">
+  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/instructa/mcpn?style=flat-square&logo=github">
   <br /> -->
   <strong>Created by</strong><br />
   <a href="https://twitter.com/kregenrek">
     <img src="https://img.shields.io/twitter/follow/kregenrek?style=social" alt="Follow @kregenrek on Twitter">
-  </a>
-  <a href="https://twitter.com/tedx_ai">
-    <img src="https://img.shields.io/twitter/follow/tedx_ai?style=social" alt="Follow @tedx_ai on Twitter">
   </a>
 </div>
 
