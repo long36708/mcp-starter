@@ -1,55 +1,55 @@
 {
   "name": "@longmo/mcp-starter",
-  "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
   "description": "Simple MCP Starter Package",
-  "contributors": [
-    {
-      "name": "Mo Long"
-    }
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/long36708",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/long36708/mcp-starter.git"
-  },
   "keywords": [
     "mcp",
     "mcp-starter",
     "model-context-protocol"
   ],
+  "homepage": "https://github.com/long36708",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/long36708/mcp-starter.git"
+  },
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Mo Long"
+    }
+  ],
+  "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
     "./cli": "./bin/cli.mjs"
   },
   "bin": {
-    "mcp-instruct": "./bin/cli.mjs"
+    "mcp-longmo": "./bin/cli.mjs"
   },
   "files": [
     "bin",
     "dist"
   ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
     "build": "unbuild && npm run chmod-run",
     "chmod-run": "node -e \"import('fs').then(fs => { try { fs.chmodSync('dist/index.mjs', '755'); } catch (e) { console.log('chmod failed (expected on Windows):', e.message); } if (fs.existsSync('dist/cli.mjs')) { try { fs.chmodSync('dist/cli.mjs', '755'); } catch (e) { console.log('chmod failed (expected on Windows):', e.message); } } })\"",
-    "start": "nodemon --exec 'tsx src/index.ts'",
-    "dev:prepare": "nr build",
-    "inspect": "npx @modelcontextprotocol/inspector@latest",
     "dev": "npx concurrently \"unbuild --stub\" \"npm run inspect\"",
-    "run-cli": "node bin/cli.mjs",
-    "dev-stdio": "npx concurrently \"npm run run-cli\" \"npm run inspect node ./bin/cli.mjs\"",
     "dev-http": "npx concurrently \"npm run run-cli -- --http --port 4200\" \"npm run inspect http://localhost:4200/mcp\"",
     "dev-sse": "npx concurrently \"npm run run-cli -- --sse --port 4201\" \"npm run inspect http://localhost:4201/sse\"",
+    "dev-stdio": "npx concurrently \"npm run run-cli\" \"npm run inspect node ./bin/cli.mjs\"",
+    "dev:prepare": "nr build",
+    "inspect": "npx @modelcontextprotocol/inspector@latest",
+    "preinstall": "npx only-allow pnpm",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "typecheck": "tsc --noEmit",
+    "nmi": "pnpx node-modules-inspector",
+    "release": "tsx scripts/release.ts",
+    "run-cli": "node bin/cli.mjs",
+    "sort": "pnpx sort-package-json",
+    "start": "nodemon --exec 'tsx src/index.ts'",
     "test": "vitest",
-    "release": "tsx scripts/release.ts"
+    "typecheck": "tsc --noEmit",
+    "update:deps": "pnpx taze -w"
   },
   "dependencies": {
     "@chatmcp/sdk": "^1.0.6",
@@ -70,6 +70,10 @@
     "unbuild": "^3.5.0",
     "vite": "^6.3.1",
     "vitest": "^3.1.1"
+  },
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
+  "engines": {
+    "node": ">=18.0.0"
   },
   "volta": {
     "node": "20.19.5"
