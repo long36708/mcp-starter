@@ -36,7 +36,7 @@
   },
   "scripts": {
     "build": "unbuild && npm run chmod-run",
-    "chmod-run": "node -e \"fs.chmodSync('dist/index.mjs', '755'); if (require('fs').existsSync('dist/cli.mjs')) require('fs').chmodSync('dist/cli.mjs', '755');\"",
+    "chmod-run": "node -e \"import('fs').then(fs => { try { fs.chmodSync('dist/index.mjs', '755'); } catch (e) { console.log('chmod failed (expected on Windows):', e.message); } if (fs.existsSync('dist/cli.mjs')) { try { fs.chmodSync('dist/cli.mjs', '755'); } catch (e) { console.log('chmod failed (expected on Windows):', e.message); } } })\"",
     "start": "nodemon --exec 'tsx src/index.ts'",
     "dev:prepare": "nr build",
     "inspect": "npx @modelcontextprotocol/inspector@latest",
