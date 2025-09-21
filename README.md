@@ -3,9 +3,9 @@
 ![mcp starter](/public/banner.png)
 
 <div align="center">
-  <!-- <img alt="NPM Downloads" src="https://img.shields.io/npm/instructa/mcpn?style=flat-square&logo=npm">
-  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/instructa/mcpn?style=flat-square&logo=jsdeliver">
-  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/instructa/mcpn?style=flat-square&logo=github">
+  <!-- <img alt="NPM Downloads" src="https://img.shields.io/npm/long36708/mcpn?style=flat-square&logo=npm">
+  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/long36708/mcpn?style=flat-square&logo=jsdeliver">
+  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/long36708/mcpn?style=flat-square&logo=github">
   <br /> -->
   <strong>Created by</strong><br />
   <a href="https://twitter.com/kregenrek">
@@ -19,8 +19,8 @@ MCP Server Starter gives you a basic structure to run local tools with Cursor, C
 
 ---
 
-<a href="https://glama.ai/mcp/servers/@instructa/mcp-starter">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@instructa/mcp-starter/badge" alt="Starter MCP server" />
+<a href="https://glama.ai/mcp/servers/@long36708/mcp-starter">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@long36708/mcp-starter/badge" alt="Starter MCP server" />
 </a>
 
 ## Features
@@ -177,6 +177,3 @@ Use the `inspect` command to debug your mcp server
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
-
-## Courses
-- Learn to build software with AI: [instructa.ai](https://www.instructa.ai)
